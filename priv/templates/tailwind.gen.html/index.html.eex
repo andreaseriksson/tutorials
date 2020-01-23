@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-header flex">
+    <h5 class="mb-0 flex-1">Listing <%= schema.human_plural %></h5>
+    <span class="text-sm"><%%= link "New <%= schema.human_singular %>", to: Routes.<%= schema.route_helper %>_path(@conn, :new), class: "text-white hover:text-gray-200" %></span>
+  </div>
+  <table class="card-body table">
+    <thead>
+      <tr>
+<%= for {k, _} <- schema.attrs do %>        <th><%= Phoenix.Naming.humanize(Atom.to_string(k)) %></th>
+<% end %>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+<%%= for <%= schema.singular %> <- @<%= schema.plural %> do %>
+      <tr>
+<%= for {k, _} <- schema.attrs do %>      <td><%%= <%= schema.singular %>.<%= k %> %></td>
+<% end %>
+        <td class="w-1/12 whitespace-no-wrap">
+          <span class="text-sm mr-1"><%%= link "Show", to: Routes.<%= schema.route_helper %>_path(@conn, :show, <%= schema.singular %>) %></span>
+          <span class="text-sm mr-1"><%%= link "Edit", to: Routes.<%= schema.route_helper %>_path(@conn, :edit, <%= schema.singular %>) %></span>
+          <span class="text-sm"><%%= link "Delete", to: Routes.<%= schema.route_helper %>_path(@conn, :delete, <%= schema.singular %>), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+<%% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,18 @@
+<%%= form_for @changeset, @action, [class: "block"], fn f -> %>
+  <%%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>The form couln't be saved! Please check the errors below.</p>
+    </div>
+  <%% end %>
+<%= for {label, input, error} <- inputs, input do %>
+  <div class="form-group">
+    <%= label %>
+    <%= input %>
+    <%= error %>
+  </div>
+<% end %>
+  <div>
+    <%%= submit "Save", class: "btn btn-primary mr-2" %>
+    <%%= link "Back", to: Routes.<%= schema.route_helper %>_path(@conn, :index), class: "btn btn-secondary" %>
+  </div>
+<%% end %>

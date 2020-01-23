@@ -10,7 +10,8 @@ defmodule TutorialWeb.ErrorHelpers do
   """
   def error_tag(form, field) do
     Enum.map(Keyword.get_values(form.errors, field), fn error ->
-      content_tag(:span, translate_error(error), class: "help-block")
+      field = field |> Atom.to_string() |> String.capitalize()
+      content_tag(:span, "#{field} #{translate_error(error)}", class: "block mt-1 text-sm text-red-700")
     end)
   end
 

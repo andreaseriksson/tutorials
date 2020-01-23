@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header flex">
+    <h5 class="mb-0 flex-1">Show <%= schema.human_singular %></h5>
+    <span class="text-sm mr-2"><%%= link "Edit", to: Routes.<%= schema.route_helper %>_path(@conn, :edit, @<%= schema.singular %>), class: "text-white hover:text-gray-200" %></span>
+    <span class="text-sm"><%%= link "Back", to: Routes.<%= schema.route_helper %>_path(@conn, :index), class: "text-white hover:text-gray-200" %></span>
+  </div>
+  <div class="card-body">
+    <ul>
+<%= for {k, _} <- schema.attrs do %>
+      <li class="mb-2">
+        <strong><%= Phoenix.Naming.humanize(Atom.to_string(k)) %>:</strong>
+        <%%= @<%= schema.singular %>.<%= k %> %>
+      </li>
+<% end %>
+    </ul>
+  </div>
+</div>

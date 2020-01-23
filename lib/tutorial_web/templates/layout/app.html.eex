@@ -17,8 +17,11 @@
       </nav>
     </header>
     <main role="main" class="container mx-auto px-6 sm:px-0 max-w-4xl">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <%= for {type, class} <- [{:info, "info"}, {:error, "danger"}] do %>
+        <%= if get_flash(@conn, type) do %>
+          <p class="alert alert-<%= class %>" role="alert"><%= get_flash(@conn, type) %></p>
+        <% end %>
+      <% end %>
       <%= render @view_module, @view_template, assigns %>
     </main>
     <footer class="bg-gray-800 mt-auto py-3">
