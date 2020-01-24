@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-header flex">
+    <h5 class="mb-0 flex-1">Show Product</h5>
+    <span class="text-sm mr-2"><%= link "Edit", to: Routes.product_path(@conn, :edit, @product), class: "text-white hover:text-gray-200" %></span>
+    <span class="text-sm"><%= link "Back", to: Routes.product_path(@conn, :index), class: "text-white hover:text-gray-200" %></span>
+  </div>
+  <div class="card-body">
+    <ul>
+
+      <li class="mb-2">
+        <strong>Name:</strong>
+        <%= @product.name %>
+      </li>
+
+      <li class="mb-2">
+        <strong>Description:</strong>
+        <%= @product.description %>
+      </li>
+
+      <li class="mb-2">
+        <strong>Price:</strong>
+        <%= @product.price %>
+      </li>
+
+    </ul>
+  </div>
+</div>

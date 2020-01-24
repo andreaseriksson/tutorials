@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-header flex">
+    <h5 class="mb-0 flex-1">Listing Products</h5>
+    <span class="text-sm"><%= link "New Product", to: Routes.product_path(@conn, :new), class: "text-white hover:text-gray-200" %></span>
+  </div>
+  <table class="card-body table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+<%= for product <- @products do %>
+      <tr>
+      <td><%= product.name %></td>
+      <td><%= product.description %></td>
+      <td><%= product.price %></td>
+
+        <td class="w-1/12 whitespace-no-wrap">
+          <span class="text-sm mr-1"><%= link "Show", to: Routes.product_path(@conn, :show, product) %></span>
+          <span class="text-sm mr-1"><%= link "Edit", to: Routes.product_path(@conn, :edit, product) %></span>
+          <span class="text-sm"><%= link "Delete", to: Routes.product_path(@conn, :delete, product), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+<% end %>
+    </tbody>
+  </table>
+</div>

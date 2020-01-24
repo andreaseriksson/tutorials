@@ -1,0 +1,24 @@
+<%= form_for @changeset, @action, [phx_change: :validate, class: "block", csrf_token: @csrf_token], fn f -> %>
+  <div class="form-group">
+    <%= label f, :name %>
+    <%= text_input f, :name, class: "form-control" %>
+    <%= error_tag f, :name %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :description %>
+    <%= textarea f, :description, class: "form-control" %>
+    <%= error_tag f, :description %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :price %>
+    <%= number_input f, :price, step: "any", class: "form-control" %>
+    <%= error_tag f, :price %>
+  </div>
+
+  <div>
+    <%= submit "Save", class: "btn btn-primary mr-2", disabled: !@changeset.valid? %>
+    <%= link "Back", to: Routes.product_path(@conn, :index), class: "btn btn-secondary" %>
+  </div>
+<% end %>

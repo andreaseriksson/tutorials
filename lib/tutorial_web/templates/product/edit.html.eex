@@ -1,0 +1,10 @@
+<div class="card">
+  <div class="card-header flex">
+    <h5 class="mb-0 flex-1">Edit Product</h5>
+  </div>
+  <div class="card-body">
+    <%= live_render @conn, TutorialWeb.ProductFormLive,
+      session: %{"id" => @product.id, "action" => Routes.product_path(@conn, :update, @product), "csrf_token" => Plug.CSRFProtection.get_csrf_token()}
+    %>
+  </div>
+</div>

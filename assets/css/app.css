@@ -113,6 +113,10 @@ a:hover {
   @apply text-blue-800;
 }
 
+.btn.disabled, .btn:disabled, input[type="submit"]:disabled {
+  opacity: .65;
+  @apply pointer-events-none;
+}
 
 /*
 * ============================
