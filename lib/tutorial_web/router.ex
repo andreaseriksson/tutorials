@@ -25,4 +25,17 @@ defmodule TutorialWeb.Router do
   # scope "/api", TutorialWeb do
   #   pipe_through :api
   # end
+
+  scope "/api/swagger" do
+    forward "/", PhoenixSwagger.Plug.SwaggerUI, otp_app: :tutorial, swagger_file: "swagger.json"
+  end
+
+  def swagger_info do
+    %{
+      info: %{
+        version: "1.0",
+        title: "Tutorial App - Fullstack Phoenix"
+      }
+    }
+  end
 end
