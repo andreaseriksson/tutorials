@@ -1,0 +1,17 @@
+<%= form_tag "#", [phx_change: :search, phx_submit: :submit] do %>
+  <input type="text" class="form-control" name="search_phrase" value="<%= @search_phrase %>" phx-debounce="500" placeholder="Search..." />
+
+  <%= if @search_results != [] do %>
+    <div class="relative" phx-window-keydown="set-focus" >
+      <div class="absolute z-50 left-0 right-0 rounded border border-gray-100 shadow py-2 bg-white">
+        <%= for {search_result, idx} <- Enum.with_index(@search_results) do %>
+          <div class="cursor-pointer p-2 hover:bg-gray-200 focus:bg-gray-200 <%= if idx == @current_focus, do: "bg-gray-200" %>" phx-click="pick" phx-value-name="<%= search_result %>">
+            <%= raw format_search_result(search_result, @search_phrase) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <p class="pt-1 text-xs text-gray-700">Search for states</p>
+<% end %>
