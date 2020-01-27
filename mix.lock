@@ -7,6 +7,7 @@
   "ecto": {:hex, :ecto, "3.3.1", "82ab74298065bf0c64ca299f6c6785e68ea5d6b980883ee80b044499df35aba1", [:mix], [{:decimal, "~> 1.6", [hex: :decimal, repo: "hexpm", optional: false]}, {:jason, "~> 1.0", [hex: :jason, repo: "hexpm", optional: true]}], "hexpm"},
   "ecto_sql": {:hex, :ecto_sql, "3.3.2", "92804e0de69bb63e621273c3492252cb08a29475c05d40eeb6f41ad2d483cfd3", [:mix], [{:db_connection, "~> 2.2", [hex: :db_connection, repo: "hexpm", optional: false]}, {:ecto, "~> 3.3", [hex: :ecto, repo: "hexpm", optional: false]}, {:myxql, "~> 0.3.0", [hex: :myxql, repo: "hexpm", optional: true]}, {:postgrex, "~> 0.15.0", [hex: :postgrex, repo: "hexpm", optional: true]}, {:telemetry, "~> 0.4.0", [hex: :telemetry, repo: "hexpm", optional: false]}], "hexpm"},
   "ex_json_schema": {:hex, :ex_json_schema, "0.7.3", "3289bf2edf57eb1ae0d5af35bc6d6c37d7e6d935f72e0120c7f0704510956049", [:mix], [], "hexpm"},
+  "faker": {:hex, :faker, "0.13.0", "8abcb996f010ccd6c85588c89fc047f11134e04da019b70252f95431d721a3dc", [:mix], [], "hexpm"},
   "file_system": {:hex, :file_system, "0.2.7", "e6f7f155970975789f26e77b8b8d8ab084c59844d8ecfaf58cbda31c494d14aa", [:mix], [], "hexpm"},
   "floki": {:hex, :floki, "0.24.0", "81ec04f66cdc7d142fa8c9f402e4493a25bf9eb8bc39f971f58a8ea84a2e35d3", [:mix], [{:html_entities, "~> 0.5.0", [hex: :html_entities, repo: "hexpm", optional: false]}], "hexpm"},
   "gettext": {:hex, :gettext, "0.17.4", "f13088e1ec10ce01665cf25f5ff779e7df3f2dc71b37084976cf89d1aa124d5c", [:mix], [], "hexpm"},

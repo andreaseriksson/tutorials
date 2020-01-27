@@ -43,10 +43,12 @@ defmodule Tutorial.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
+      # Additional
       {:phoenix_live_view, "~> 0.5.1"},
       {:floki, ">= 0.0.0", only: :test},
       {:phoenix_swagger, "~> 0.8"},
-      {:ex_json_schema, "~> 0.5"}
+      {:ex_json_schema, "~> 0.5"},
+      {:faker, "~> 0.13"}
     ]
   end
 
