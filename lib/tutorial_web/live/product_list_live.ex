@@ -5,8 +5,13 @@ defmodule TutorialWeb.ProductListLive do
   alias TutorialWeb.ProductListLive
   alias Tutorial.Products
 
-  def mount(_session, socket) do
-    {:ok, assign(socket, conn: socket)}
+  def mount(%{"csrf_token" => csrf_token} = _session, socket) do
+    assigns = [
+      conn: socket,
+      csrf_token: csrf_token
+    ]
+
+    {:ok, assign(socket, assigns)}
   end
 
   def render(assigns) do

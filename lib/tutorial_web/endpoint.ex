@@ -1,8 +1,14 @@
 defmodule TutorialWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :tutorial
 
+  @session_options [
+    store: :cookie,
+    key: "_tutorial_key",
+    signing_salt: "4qBWyMiY"
+  ]
+
   socket "/live", Phoenix.LiveView.Socket,
-    websocket: [connect_info: []]
+    websocket: [connect_info: [session: @session_options]]
 
   socket "/socket", TutorialWeb.UserSocket,
     websocket: true,
@@ -40,10 +46,7 @@ defmodule TutorialWeb.Endpoint do
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
-  plug Plug.Session,
-    store: :cookie,
-    key: "_tutorial_key",
-    signing_salt: "4qBWyMiY"
+  plug Plug.Session, @session_options
 
   plug TutorialWeb.Router
 end
