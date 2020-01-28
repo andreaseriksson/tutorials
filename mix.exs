@@ -48,7 +48,8 @@ defmodule Tutorial.MixProject do
       {:floki, ">= 0.0.0", only: :test},
       {:phoenix_swagger, "~> 0.8"},
       {:ex_json_schema, "~> 0.5"},
-      {:faker, "~> 0.13"}
+      {:faker, "~> 0.13"},
+      {:scrivener_ecto, "~> 2.0"}
     ]
   end
 

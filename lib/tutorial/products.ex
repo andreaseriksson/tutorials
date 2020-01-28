@@ -21,6 +21,11 @@ defmodule Tutorial.Products do
     Repo.all(Product)
   end
 
+  def paginate_products(params \\ []) do
+    Product
+    |> Repo.paginate(params)
+  end
+
   @doc """
   Gets a single product.
 

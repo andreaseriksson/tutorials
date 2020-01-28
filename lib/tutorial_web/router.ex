@@ -18,6 +18,8 @@ defmodule TutorialWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    live "/products", ProductListLive # NEEDS TO BE ABOVE
     resources "/products", ProductController
   end
 
