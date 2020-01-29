@@ -55,9 +55,13 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("topic:subtopic", {})
+let channel = socket.channel(`app:${document.querySelector("meta[name='csrf-token']").getAttribute("content")}`, {})
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
+
+setTimeout(() => {
+  channel.push('paginate', {page: '3'})
+}, 3000)
 
 export default socket

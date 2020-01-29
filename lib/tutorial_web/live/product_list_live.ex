@@ -6,6 +6,8 @@ defmodule TutorialWeb.ProductListLive do
   alias Tutorial.Products
 
   def mount(%{"csrf_token" => csrf_token} = _session, socket) do
+    if connected?(socket), do: Phoenix.PubSub.subscribe(Tutorial.PubSub, "app:#{csrf_token}")
+
     assigns = [
       conn: socket,
       csrf_token: csrf_token
@@ -31,6 +33,12 @@ defmodule TutorialWeb.ProductListLive do
     assigns = get_and_assign_page(nil)
     {:noreply, assign(socket, assigns)}
   end
+
+  def handle_info({"paginate", %{"page" => page}}, socket) do
+    {:noreply, live_redirect(socket, to: Routes.live_path(socket, ProductListLive, page: page))}
+  end
+
+  def handle_info(_, socket), do: {:noreply, socket}
 
   def get_and_assign_page(page_number) do
     %{

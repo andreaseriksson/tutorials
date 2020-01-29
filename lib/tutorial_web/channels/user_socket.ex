@@ -3,6 +3,7 @@ defmodule TutorialWeb.UserSocket do
 
   ## Channels
   # channel "room:*", TutorialWeb.RoomChannel
+  channel "app:*", TutorialWeb.AppChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
