@@ -6,6 +6,7 @@ defmodule Tutorial.Products.Product do
     field :description, :string
     field :name, :string
     field :price, :float
+    has_many :variants, Tutorial.Products.Variant
 
     timestamps()
   end
