@@ -7,6 +7,7 @@ defmodule Tutorial.Products do
   alias Tutorial.Repo
 
   alias Tutorial.Products.Product
+  alias Tutorial.Products.Variant
 
   @doc """
   Returns the list of products.
@@ -40,7 +41,7 @@ defmodule Tutorial.Products do
       ** (Ecto.NoResultsError)
 
   """
-  def get_product!(id), do: Repo.get!(Product, id)
+  def get_product!(id), do: Repo.get!(Product, id) |> Repo.preload(variants: from(v in Variant, order_by: v.id))
 
   @doc """
   Creates a product.
@@ -106,8 +107,6 @@ defmodule Tutorial.Products do
   def change_product(%Product{} = product) do
     Product.changeset(product, %{})
   end
-
-  alias Tutorial.Products.Variant
 
   @doc """
   Returns the list of variants for a product.

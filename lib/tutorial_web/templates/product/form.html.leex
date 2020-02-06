@@ -17,7 +17,37 @@
     <%= error_tag f, :price %>
   </div>
 
-  <div>
+  <p class="mt-4 mb-2 font-bold">Variants</p>
+
+  <%= inputs_for f, :variants, fn v -> %>
+    <div class="flex flex-wrap -mx-1 overflow-hidden">
+      <div class="form-group px-1 w-3/6">
+        <%= label v, :name %>
+        <%= text_input v, :name, class: "form-control" %>
+        <%= error_tag v, :name %>
+      </div>
+
+      <div class="form-group px-1 w-2/6">
+        <%= label v, :value %>
+        <%= text_input v, :value, class: "form-control" %>
+        <%= error_tag v, :value %>
+      </div>
+
+      <div class="form-group px-1 w-1/6">
+        <%= label v, :delete %><br>
+        <%= if is_nil(v.data.temp_id) do %>
+          <%= checkbox v, :delete %>
+        <% else %>
+          <%= hidden_input v, :temp_id %>
+          <a href="#" phx-click="remove-variant" phx-value-remove="<%= v.data.temp_id %>">&times</a>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <a href="#" phx-click="add-variant">Add a variant</a>
+
+  <div class="mt-4">
     <%= submit "Save", class: "btn btn-primary mr-2", disabled: !@changeset.valid? %>
     <%= link "Back", to: Routes.product_path(@conn, :index), class: "btn btn-secondary" %>
   </div>
