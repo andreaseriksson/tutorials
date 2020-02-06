@@ -60,8 +60,4 @@ channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
 
-setTimeout(() => {
-  channel.push('paginate', {page: '3'})
-}, 3000)
-
 export default socket
