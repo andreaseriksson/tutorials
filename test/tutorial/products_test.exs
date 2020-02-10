@@ -10,6 +10,7 @@ defmodule Tutorial.ProductsTest do
       |> Products.create_product()
 
     product
+    |> Tutorial.Repo.preload(:variants)
   end
 
   describe "products" do
@@ -20,8 +21,8 @@ defmodule Tutorial.ProductsTest do
     @invalid_attrs %{description: nil, name: nil, price: nil}
 
     test "list_products/0 returns all products" do
-      product = product_fixture()
-      assert Products.list_products() == [product]
+      %{id: id} = product_fixture()
+      assert [%Product{id: ^id}] = Products.list_products()
     end
 
     test "get_product!/1 returns the product with given id" do

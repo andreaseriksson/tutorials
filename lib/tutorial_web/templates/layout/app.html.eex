@@ -26,7 +26,7 @@
     </main>
     <footer class="bg-gray-800 mt-auto py-3">
       <div class="container pb-4 max-w-4xl mx-auto text-center text-gray-300 text-sm">
-        &copy; <%= DateTime.utc_now.year %> Phoenix Tutorials
+        &copy; <%= DateTime.utc_now.year %> Fullstack Phoenix Tutorials
       </div>
     </footer>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
