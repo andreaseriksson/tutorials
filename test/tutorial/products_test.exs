@@ -6,7 +6,7 @@ defmodule Tutorial.ProductsTest do
   def product_fixture(attrs \\ %{}) do
     {:ok, product} =
       attrs
-      |> Enum.into(%{description: "some description", name: "some name", price: 120.5})
+      |> Enum.into(%{description: "some description", name: "some name", price: 120.5, properties: %{}})
       |> Products.create_product()
 
     product
