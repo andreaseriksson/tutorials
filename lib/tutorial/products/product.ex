@@ -8,6 +8,8 @@ defmodule Tutorial.Products.Product do
     field :price, :float
     field :properties, :map
     has_many :variants, Tutorial.Products.Variant
+    has_many :taggings, Tutorial.Taggable.Tagging
+    has_many :tags, through: [:taggings, :tag]
 
     timestamps()
   end
