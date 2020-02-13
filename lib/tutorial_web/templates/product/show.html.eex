@@ -23,5 +23,9 @@
       </li>
 
     </ul>
+
+    <div class="mt-4">
+    <%= live_render @conn, TutorialWeb.ProductTaggingLive, session: %{"id" => @product.id} %>
+    </div>
   </div>
 </div>

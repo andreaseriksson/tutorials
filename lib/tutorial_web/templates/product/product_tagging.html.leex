@@ -1,0 +1,30 @@
+<%= form_tag "#", [phx_change: :search, phx_submit: :submit] do %>
+  <div class="py-2 px-3 bg-white border border-gray-400" phx-window-keydown="set-focus">
+<%= for tagging <- @taggings do %>
+     <span class="inline-block text-xs bg-green-400 text-white py-1 px-2 mr-1 mb-1 rounded">
+      <span><%= tagging.tag.name %></span>
+      <a href="#" class="text-white hover:text-white" phx-click="delete" phx-value-tagging="<%= tagging.id %>">&times</a>
+    </span>
+<% end %>
+  <input
+    type="text"
+    class="inline-block text-sm focus:outline-none"
+    name="search_phrase"
+    value="<%= @search_phrase %>"
+    phx-debounce="500"
+    placeholder="Add tag"
+  >
+  </div>
+
+  <%= if @search_results != [] do %>
+    <div class="relative">
+      <div class="absolute z-50 left-0 right-0 rounded border border-gray-100 shadow py-1 bg-white">
+        <%= for {search_result, idx} <- Enum.with_index(@search_results) do %>
+          <div class="cursor-pointer p-2 hover:bg-gray-200 focus:bg-gray-200 <%= if idx == @current_focus, do: "bg-gray-200" %>" phx-click="pick" phx-value-name="<%= search_result %>">
+            <%= raw format_search_result(search_result, @search_phrase) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
