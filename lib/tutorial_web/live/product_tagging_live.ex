@@ -3,7 +3,7 @@ defmodule TutorialWeb.ProductTaggingLive do
 
   alias Tutorial.{Repo, Products, Taggable}
 
-  def mount(%{"id" => product_id} = _session, socket) do
+  def mount(%{"id" => product_id, "csrf_token" => csrf_token} = _session, socket) do
     product = get_product(product_id, connected?(socket))
 
     assigns = [
@@ -11,6 +11,10 @@ defmodule TutorialWeb.ProductTaggingLive do
       product: product,
       taggings: sorted(product.taggings),
       tags: [],
+      # CHANNEL NAME
+      channel_name: "app:#{csrf_token}",
+      # THE FOLLOWING ONES REGARDS THE AUTOCOMPLETE
+      # SEARCH BOX.
       search_results: [],
       search_phrase: "",
       current_focus: -1
@@ -38,6 +42,7 @@ defmodule TutorialWeb.ProductTaggingLive do
   def handle_event("pick", %{"name" => search_phrase}, socket) do
     product = socket.assigns.product
     taggings = add_tagging_to_product(product, search_phrase)
+    refocus_input(socket)
 
     assigns = [
       taggings: sorted(taggings),
@@ -85,6 +90,13 @@ defmodule TutorialWeb.ProductTaggingLive do
 
   # FALLBACK FOR NON RELATED KEY STROKES
   def handle_event("set-focus", _, socket), do: {:noreply, socket}
+
+  def handle_event("focus-input", _, socket), do: {:noreply, refocus_input(socket)}
+
+  defp refocus_input(socket) do
+    TutorialWeb.Endpoint.broadcast_from(self(), socket.assigns.channel_name, "focus", %{id: "tagging-form"})
+    socket
+  end
 
   defp search(_, ""), do: []
   defp search(tags, search_phrase) do
