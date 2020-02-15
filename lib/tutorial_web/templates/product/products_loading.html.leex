@@ -1,0 +1,28 @@
+<div class="card mb-20">
+  <div class="card-header flex">
+    <h5 class="mb-0 flex-1">Listing Products</h5>
+    <span class="text-sm"><%= link "New Product", to: Routes.product_path(@conn, :new), class: "text-white hover:text-gray-200" %></span>
+  </div>
+  <table class="card-body table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+<%= for _ <- @products do %>
+      <tr>
+        <td><div class="h-6 bg-gray-200"></div></td>
+        <td><div class="h-6 bg-gray-200"></div></td>
+        <td><div class="h-6 bg-gray-200"></div></td>
+        <td class="w-1/12 whitespace-no-wrap"><div class="h-6 bg-gray-200"></div></td>
+      </tr>
+<% end %>
+    </tbody>
+  </table>
+</div>
+

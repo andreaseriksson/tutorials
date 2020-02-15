@@ -3,7 +3,9 @@ defmodule TutorialWeb.ProductListLive do
 
   alias TutorialWeb.Router.Helpers, as: Routes
   alias TutorialWeb.ProductListLive
+  alias Tutorial.Repo
   alias Tutorial.Products
+  alias Tutorial.Products.Product
 
   def mount(%{"csrf_token" => csrf_token} = _session, socket) do
     if connected?(socket), do: Phoenix.PubSub.subscribe(Tutorial.PubSub, "app:#{csrf_token}")
@@ -17,7 +19,11 @@ defmodule TutorialWeb.ProductListLive do
   end
 
   def render(assigns) do
-    TutorialWeb.ProductView.render("products.html", assigns)
+    if connected?(assigns.conn) do
+      TutorialWeb.ProductView.render("products.html", assigns)
+    else
+      TutorialWeb.ProductView.render("products_loading.html", assigns)
+    end
   end
 
   def handle_event("nav", %{"page" => page}, socket) do
@@ -25,12 +31,14 @@ defmodule TutorialWeb.ProductListLive do
   end
 
   def handle_params(%{"page" => page}, _, socket) do
-    assigns = get_and_assign_page(page)
+    connected = connected?(socket)
+    assigns = get_and_assign_page(page, connected)
     {:noreply, assign(socket, assigns)}
   end
 
   def handle_params(_, _, socket) do
-    assigns = get_and_assign_page(nil)
+    connected = connected?(socket)
+    assigns = get_and_assign_page(nil, connected)
     {:noreply, assign(socket, assigns)}
   end
 
@@ -40,7 +48,16 @@ defmodule TutorialWeb.ProductListLive do
 
   def handle_info(_, socket), do: {:noreply, socket}
 
-  def get_and_assign_page(page_number) do
+  def get_and_assign_page(_page_number, false) do
+  	total_count =  Repo.aggregate(Product, :count)
+    product_count = Enum.min([10, total_count])
+
+    [
+      products: Enum.to_list(1..product_count)
+    ]
+  end
+
+  def get_and_assign_page(page_number, _) do
     %{
       entries: entries,
       page_number: page_number,
