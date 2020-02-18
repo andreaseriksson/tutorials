@@ -1,3 +1,8 @@
 <div class="max-w-sm">
   <%= live_render @conn, TutorialWeb.SearchFormLive %>
 </div>
+
+<div class="mt-4">
+  <%= live_render @conn, TutorialWeb.CalendarLive %>
+</div>
+

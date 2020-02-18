@@ -49,7 +49,8 @@ defmodule Tutorial.MixProject do
       {:phoenix_swagger, "~> 0.8"},
       {:ex_json_schema, "~> 0.5"},
       {:faker, "~> 0.13"},
-      {:scrivener_ecto, "~> 2.0"}
+      {:scrivener_ecto, "~> 2.0"},
+      {:timex, "~> 3.6"}
     ]
   end
 
