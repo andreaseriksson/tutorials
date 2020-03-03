@@ -19,6 +19,7 @@ defmodule TutorialWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/draggable", PageController, :draggable
 
     live "/products", ProductListLive # NEEDS TO BE ABOVE
     resources "/products", ProductController
