@@ -11,9 +11,12 @@ defmodule Tutorial.Application do
       # Start the Ecto repository
       Tutorial.Repo,
       # Start the endpoint when the application starts
-      TutorialWeb.Endpoint
+      TutorialWeb.Endpoint,
+      # Starts Presence Process
+      Tutorial.Presence,
       # Starts a worker by calling: Tutorial.Worker.start_link(arg)
       # {Tutorial.Worker, arg},
+      Tutorial.DraggableServer
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

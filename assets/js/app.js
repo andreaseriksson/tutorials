@@ -11,6 +11,8 @@ import css from "../css/app.css"
 //
 import "phoenix_html"
 
+import interact from "interactjs"
+
 // Import local files
 //
 // Local files can be imported directly using relative paths, for example:
@@ -20,6 +22,17 @@ import {Socket} from "phoenix"
 import LiveSocket from "phoenix_live_view"
 
 let Hooks = {}
+Hooks.Draggable = {
+  mounted() {
+    let instance = this
+
+    interact(this.el).draggable({
+      onmove(event) {
+        instance.pushEvent("moving", {x: event.dx, y: event.dy})
+      }
+    })
+  }
+}
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
 let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}, hooks: Hooks});

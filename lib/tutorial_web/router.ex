@@ -9,6 +9,7 @@ defmodule TutorialWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug TutorialWeb.GenerateCSRF
+    plug TutorialWeb.AssignSession
   end
 
   pipeline :api do
@@ -19,6 +20,7 @@ defmodule TutorialWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/draggable", PageController, :draggable
 
     live "/products", ProductListLive # NEEDS TO BE ABOVE
     resources "/products", ProductController
