@@ -27,7 +27,7 @@ defmodule TutorialWeb.ProductListLive do
   end
 
   def handle_event("nav", %{"page" => page}, socket) do
-    {:noreply, live_redirect(socket, to: Routes.live_path(socket, ProductListLive, page: page))}
+    {:noreply, push_patch(socket, to: Routes.live_path(socket, ProductListLive, page: page))}
   end
 
   def handle_params(%{"page" => page}, _, socket) do
