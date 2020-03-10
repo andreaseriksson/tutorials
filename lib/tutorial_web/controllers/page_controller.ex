@@ -8,4 +8,8 @@ defmodule TutorialWeb.PageController do
   def draggable(conn, _params) do
     render(conn, "draggable.html")
   end
+
+  def task_async(conn, _params) do
+    render(conn, "task_async.html")
+  end
 end
