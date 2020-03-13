@@ -7,7 +7,7 @@ defmodule TutorialWeb.ProductListLive do
   alias Tutorial.Products
   alias Tutorial.Products.Product
 
-  def mount(%{"csrf_token" => csrf_token} = _session, socket) do
+  def mount(_params, %{"csrf_token" => csrf_token} = _session, socket) do
     if connected?(socket), do: Phoenix.PubSub.subscribe(Tutorial.PubSub, "app:#{csrf_token}")
 
     assigns = [

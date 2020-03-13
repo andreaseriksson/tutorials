@@ -1,7 +1,7 @@
 defmodule TutorialWeb.SearchFormLive do
   use Phoenix.LiveView
 
-  def mount(%{}, socket) do
+  def mount(_params, _session, socket) do
     assigns = [
       conn: socket,
       search_results: [],

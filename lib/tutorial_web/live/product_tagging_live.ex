@@ -3,7 +3,7 @@ defmodule TutorialWeb.ProductTaggingLive do
 
   alias Tutorial.{Repo, Products, Taggable}
 
-  def mount(%{"id" => product_id, "csrf_token" => csrf_token} = _session, socket) do
+  def mount(_params, %{"id" => product_id, "csrf_token" => csrf_token} = _session, socket) do
     product = get_product(product_id, connected?(socket))
 
     assigns = [

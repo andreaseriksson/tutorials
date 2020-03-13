@@ -3,7 +3,7 @@ defmodule TutorialWeb.TaskStarterLive do
 
   alias Tutorial.Worker
 
-  def mount(_session, socket) do
+  def mount(_params, _session, socket) do
     if connected?(socket) do
       Worker.subscribe()
     end

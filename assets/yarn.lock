@@ -3466,7 +3466,7 @@ pbkdf2@^3.0.3:
   version "2.14.0"
 
 "phoenix_live_view@file:../deps/phoenix_live_view":
-  version "0.8.1"
+  version "0.9.0"
 
 pify@^3.0.0:
   version "3.0.0"

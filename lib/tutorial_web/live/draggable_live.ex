@@ -4,7 +4,7 @@ defmodule TutorialWeb.DraggableLive do
   alias Tutorial.DraggableServer
   alias Tutorial.Presence
 
-  def mount(%{"session_id" => session_id}, socket) do
+  def mount(_params, %{"session_id" => session_id}, socket) do
     if connected?(socket) do
       # As soon as a new instance if the LiveView is mounted, track the session id
       {:ok, _} = Presence.track(self(), "tutorial:presence", session_id, %{

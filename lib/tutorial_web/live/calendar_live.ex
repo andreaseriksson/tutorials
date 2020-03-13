@@ -4,7 +4,7 @@ defmodule TutorialWeb.CalendarLive do
 
   @week_start_at :mon
 
-  def mount(_session, socket) do
+  def mount(_params, _session, socket) do
     current_date = Timex.now
 
     assigns = [

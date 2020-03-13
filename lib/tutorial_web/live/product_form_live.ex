@@ -5,7 +5,7 @@ defmodule TutorialWeb.ProductFormLive do
   alias Tutorial.Products.Product
   alias Tutorial.Products.Variant
 
-  def mount(%{"action" => action, "csrf_token" => csrf_token} = session, socket) do
+  def mount(_params, %{"action" => action, "csrf_token" => csrf_token} = session, socket) do
     product = get_product(session)
     changeset =
       Products.change_product(product)
