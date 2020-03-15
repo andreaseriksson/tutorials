@@ -1,3 +1,5 @@
 <div class="alert alert-info">
   This page should be private and requires an account.
 </div>
+
+Welcome <%= @current_user.email %>

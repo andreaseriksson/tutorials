@@ -3,7 +3,7 @@ defmodule Tutorial.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users) do
-      add :account_id, references(:accounts, on_delete: :delete_all)
+      add :account_id, references(:accounts, on_delete: :delete_all), null: false
 
       add :email, :string, null: false
       add :password_hash, :string

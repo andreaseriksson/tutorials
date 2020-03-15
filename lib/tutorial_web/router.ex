@@ -40,7 +40,7 @@ defmodule TutorialWeb.Router do
   scope "/", TutorialWeb do
     pipe_through [:protected, :browser]
 
-    get "private", PageController, :private
+    get "/private", PageController, :private
   end
 
   # Other scopes may use custom stacks.

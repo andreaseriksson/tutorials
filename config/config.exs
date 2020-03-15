@@ -40,7 +40,8 @@ config :phoenix_swagger, json_library: Jason
 
 config :tutorial, :pow,
   user: Tutorial.Users.User,
-  repo: Tutorial.Repo
+  repo: Tutorial.Repo,
+  web_module: TutorialWeb
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
