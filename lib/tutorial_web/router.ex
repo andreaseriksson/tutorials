@@ -1,5 +1,6 @@
 defmodule TutorialWeb.Router do
   use TutorialWeb, :router
+  use Pow.Phoenix.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -15,6 +16,16 @@ defmodule TutorialWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :protected do
+    plug Pow.Plug.RequireAuthenticated, error_handler: Pow.Phoenix.PlugErrorHandler
+  end
+
+  scope "/" do
+    pipe_through :browser
+
+    pow_routes()
+  end
+
   scope "/", TutorialWeb do
     pipe_through :browser
 
@@ -24,6 +35,12 @@ defmodule TutorialWeb.Router do
 
     live "/products", ProductListLive # NEEDS TO BE ABOVE
     resources "/products", ProductController
+  end
+
+  scope "/", TutorialWeb do
+    pipe_through [:protected, :browser]
+
+    get "private", PageController, :private
   end
 
   # Other scopes may use custom stacks.
