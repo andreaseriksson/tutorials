@@ -50,7 +50,8 @@ defmodule Tutorial.MixProject do
       {:ex_json_schema, "~> 0.5"},
       {:faker, "~> 0.13"},
       {:scrivener_ecto, "~> 2.0"},
-      {:timex, "~> 3.6"}
+      {:timex, "~> 3.6"},
+      {:pow, "~> 1.0.18"}
     ]
   end
 
