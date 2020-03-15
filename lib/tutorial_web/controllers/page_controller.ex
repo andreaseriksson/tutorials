@@ -12,4 +12,8 @@ defmodule TutorialWeb.PageController do
   def task_async(conn, _params) do
     render(conn, "task_async.html")
   end
+
+  def private(conn, _params) do
+    render(conn, "private.html")
+  end
 end
