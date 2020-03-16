@@ -24,7 +24,7 @@ defmodule Tutorial.Users.User do
     |> assoc_constraint(:account)
   end
 
-  defp create_account_for_new_user(%{valid?: true,  changes: %{account_name: account_name}} = changeset, %{account_id: nil} = user) do
+  defp create_account_for_new_user(%{valid?: true,  changes: %{account_name: account_name}} = changeset, %{account_id: nil} = _user) do
     with {:ok, account} <- Accounts.create_account(%{name: account_name}) do
       put_assoc(changeset, :account, account)
     else
