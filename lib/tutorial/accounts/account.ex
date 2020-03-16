@@ -5,6 +5,8 @@ defmodule Tutorial.Accounts.Account do
   schema "accounts" do
     field :name, :string
 
+    has_many :secrets, Tutorial.Secrets.Secret
+
     timestamps()
   end
 

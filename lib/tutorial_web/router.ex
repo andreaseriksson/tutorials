@@ -18,6 +18,7 @@ defmodule TutorialWeb.Router do
 
   pipeline :protected do
     plug Pow.Plug.RequireAuthenticated, error_handler: Pow.Phoenix.PlugErrorHandler
+    plug TutorialWeb.Plugs.SetCurrentAccount
   end
 
   scope "/" do
@@ -41,6 +42,7 @@ defmodule TutorialWeb.Router do
     pipe_through [:protected, :browser]
 
     get "/private", PageController, :private
+    resources "/secrets", SecretController
   end
 
   # Other scopes may use custom stacks.
