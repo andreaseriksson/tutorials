@@ -44,7 +44,7 @@ defmodule Tutorial.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       # Additional
-      {:phoenix_live_view, "~> 0.9.0"},
+      {:phoenix_live_view, "~> 0.10.0"},
       {:floki, ">= 0.0.0", only: :test},
       {:phoenix_swagger, "~> 0.8"},
       {:ex_json_schema, "~> 0.5"},
