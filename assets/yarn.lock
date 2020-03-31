@@ -881,6 +881,11 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
+alpinejs@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/alpinejs/-/alpinejs-2.2.3.tgz#800ff56fc773f65279dac1a405a919930e6bc4cd"
+  integrity sha512-Nxqqj/67MzcP7s7runJELF7/IedUYpTA3yvWq8TbnZwOTgXWbDDvUzsljMwRk4zQGRWKs1pmqv3EJE8a1M8cwg==
+
 ansi-regex@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-4.1.0.tgz#8b9f8f08cf1acb843756a839ca8c7e3168c51997"
