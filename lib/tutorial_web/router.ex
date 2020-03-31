@@ -34,6 +34,7 @@ defmodule TutorialWeb.Router do
     get "/", PageController, :index
     get "/draggable", PageController, :draggable
     get "/task_async", PageController, :task_async
+    live "/modals", ModalsLive, :index
 
     live "/products", ProductListLive # NEEDS TO BE ABOVE
     resources "/products", ProductController
