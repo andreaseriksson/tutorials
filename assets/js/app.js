@@ -36,6 +36,27 @@ Hooks.Draggable = {
   }
 }
 
+Hooks.initModal = {
+  mounted() {
+    const handleOpenCloseEvent = event => {
+      if (event.detail.open === false) {
+        this.el.removeEventListener("modal-change", handleOpenCloseEvent)
+        this.pushEvent("close-modal", {id: this.el.id})
+      }
+    }
+    this.el.addEventListener("modal-change", handleOpenCloseEvent)
+  }
+}
+
+Hooks.closeModal = {
+  mounted() {
+    const modalId = this.el.dataset.modalId
+    const el = document.getElementById(modalId)
+    const event = new CustomEvent('close-modal');
+    el.dispatchEvent(event)
+  }
+}
+
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
 let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}, hooks: Hooks});
 liveSocket.connect()
